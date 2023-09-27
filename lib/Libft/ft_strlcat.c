@@ -1,20 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 17:20:05 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/09/15 17:53:51 by cbouwen          ###   ########.fr       */
+/*   Created: 2023/04/03 14:01:21 by cbouwen           #+#    #+#             */
+/*   Updated: 2023/04/12 16:40:18 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-#define FDF_H
+#include "libft.h"
 
-#include "Libft/libft.h"
-#include "Getnextline/get_next_line_bonus.h"
-#include "Printf/ft_printf.h"
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	srclen;
+	size_t	dstlen;
 
-#endif
+	i = 0;
+	while (src[i])
+		i++;
+	srclen = i;
+	i = 0;
+	while (dst[i])
+		i++;
+	dstlen = i;
+	if (size <= dstlen)
+		return (srclen + size);
+	i = 0;
+	while (src[i] && (dstlen + i + 1) < size)
+	{
+		dst[dstlen + i] = src[i];
+		i++;
+	}
+	dst[dstlen + i] = '\0';
+	return (dstlen + srclen);
+}
