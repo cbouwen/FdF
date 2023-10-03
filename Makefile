@@ -5,7 +5,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 MLX_FLAGS = -L /usr/lib -l Xext -l X11 -l m -l z
 
 SRC_DIR = ./src/
-SRC = main.c
+SRC = main.c window_utils.c
 SRC_FILES = $(addprefix $(SRC_DIR), $(SRC))
 
 HEADER = ./inc/fdf.h ./mlx_linux/mlx.h ./mlx_linux/mlx_int.h
@@ -15,11 +15,11 @@ LIBFT_LIB = $(LIBFT_DIR)libft.a
 LIBFT_INC = -I $(LIBFT_DIR)
 
 GNL_DIR = ./lib/Getnextline/
-GNL_LIB = $(GNL_DIR)libgetnextline.a
+GNL_LIB = $(GNL_DIR)getnextline.a
 GNL_INC = -I $(GNL_DIR)
 
 PRINTF_DIR = ./lib/Printf/
-PRINTF_LIB = $(PRINTF_DIR)libprintf.a
+PRINTF_LIB = $(PRINTF_DIR)printf.a
 PRINTF_INC = -I $(PRINTF_DIR)
 
 all : $(NAME)
