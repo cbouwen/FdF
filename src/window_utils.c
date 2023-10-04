@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:28:21 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/03 14:52:37 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/03 15:11:00 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int     handle_input(int key, t_mlx_data *win_data)
+static int     handle_input(int key, t_mlx_data *win_data) //delete at end of project, no need for it
 {
         if (key == 65307)
         {
@@ -40,36 +40,12 @@ int	close_window(t_mlx_data *win_data)
 	exit (1);
 }
 
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-void	ft_make_square(t_data *img)
-{
-	int	x;
-	int	y;
-
-	x = 500;
-	while (x < 1500)
-	{
-		y = 250;
-		while (y < 750)
-		{
-			my_mlx_pixel_put(img, x, y, 0x00FF0000);
-			y++;
-		}
-		x++;
-	}
-}
-
 void	init_window(t_mlx_data *win_data)
 {
 	win_data->mlx_win = mlx_new_window(win_data->mlx, 1920, 1080, "FdF");
 	win_data->img.img = mlx_new_image(win_data->mlx, 1920, 1080);
 	win_data->img.addr = mlx_get_data_addr(win_data->img.img, &win_data->img.bits_per_pixel, &win_data->img.line_length, &win_data->img.endian);
-	ft_make_square(&win_data->img);
 	mlx_put_image_to_window(win_data->mlx, win_data->mlx_win, win_data->img.img, 0, 0);
 	mlx_hook(win_data->mlx_win, 17, 1L<<17, &close_window, win_data);
-	mlx_key_hook(win_data->mlx_win, handle_input, win_data);
+	mlx_key_hook(win_data->mlx_win, handle_input, win_data); //handle_input ==> close_window at end of project
 }

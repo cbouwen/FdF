@@ -5,7 +5,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 MLX_FLAGS = -L /usr/lib -l Xext -l X11 -l m -l z
 
 SRC_DIR = ./src/
-SRC = main.c window_utils.c
+SRC = main.c
 SRC_FILES = $(addprefix $(SRC_DIR), $(SRC))
 
 HEADER = ./inc/fdf.h ./mlx_linux/mlx.h ./mlx_linux/mlx_int.h

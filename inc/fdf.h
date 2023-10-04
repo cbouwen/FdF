@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:20:05 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/03 14:27:52 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/04 17:12:42 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@
 #include "../lib/Printf/ft_printf.h"
 #include "../mlx_linux/mlx.h"
 #include <stdlib.h>
-
+#include <fcntl.h>
+#include <unistd.h>
+/*
 #define HEIGHT 1080
 #define WIDTH 1920
 
+//mlx struct for image
 typedef struct	s_data
 {
 	void	*img;
@@ -31,6 +34,7 @@ typedef struct	s_data
 	int	line_length;
 }			t_data;
 
+//mlx struct for window initialization
 typedef struct	s_mlx_data
 {
 	void	*mlx;
@@ -38,7 +42,17 @@ typedef struct	s_mlx_data
 	t_data	img;
 }			t_mlx_data;
 
+typedef struct	s_coordinates
+{
+	int	x;
+	int	y;
+	int	z;
+	s_coordinates	*prev;
+	s_coordinates	*next;
+}		t_coordinates;
+
 int	close_window(t_mlx_data *win_data);
 void	init_window(t_mlx_data *win_data);
-
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+*/
 #endif
