@@ -6,20 +6,28 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:38:38 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/04 18:47:58 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/05 18:05:27 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-int	init_colomn(char *number, size_t j)
+int	init_colomn(char *number, size_t colomn)
 {
-	int	colomn;
+	int	*int_array;
+	size_t	i;
 
-	colomn = (int)malloc(sizeof(int) * 
-
-
-	return (colomn);
+	i = 0;
+	int_array = (int *)malloc(sizeof(int) * colomn);
+	if(!int_array)
+		ft_free; //write this
+	while (i < colomn)
+	{
+		int_array[i] = ft_atoi(number[i]);
+		//something to skip the spaces?
+		i++;
+	}
+	return (int_array);
 }
 
 int	**init_map(int fd, int rows)
@@ -27,21 +35,17 @@ int	**init_map(int fd, int rows)
 	char	*line;
 	int	**map;
 	size_t	i;
-	size_t	j;
+	size_t	colomn;
 
 	map = (int **)malloc(sizeof(int) * (rows + 1));
 	if (!map)
 		return (NULL);
 	line = get_next_line(fd);
 	i = 0;
+	colomn = map_colomn(line);
 	while (i < (size_t)rows)
 	{
-		j = 0;
-		while (line[j])
-		{
-			map[i][j] = init_colomn(line[j], j);
-			j++;
-		}
+		map[i] = init_colomn(line, colomn);
 		free(line);
 		line = get_next_line(fd);
 		i++;
@@ -50,6 +54,13 @@ int	**init_map(int fd, int rows)
 	return (map);
 }
 
+int	map_colomn(char *line)
+{
+	size_t	i;
+
+	i = ft_word_count(line, ' ');
+	return (i);
+}
 
 int     map_rows(char *map)
 {
@@ -75,14 +86,14 @@ int     map_rows(char *map)
         return (rows);
 }
 
-int	parse_map(char *map, int rows)
+int	**parse_map(char *argv, int rows)
 {
 	int	**map;
 	int	fd;
 	int	i;
 
 	i = 0;
-	fd = open(argv[1], O_RDONLY);
+	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 	{
 		perror("Error opening file\n");
