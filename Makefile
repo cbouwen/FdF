@@ -5,7 +5,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 MLX_FLAGS = -L /usr/lib -l Xext -l X11 -l m -l z
 
 SRC_DIR = ./src/
-SRC = main.c
+SRC = main.c info.c parse.c
 SRC_FILES = $(addprefix $(SRC_DIR), $(SRC))
 
 HEADER = ./inc/fdf.h ./mlx_linux/mlx.h ./mlx_linux/mlx_int.h
@@ -43,6 +43,9 @@ clean :
 	make clean -C $(PRINTF_DIR)
 
 fclean : clean
+	make fclean -C $(LIBFT_DIR)
+	make fclean -C $(GNL_DIR)
+	make fclean -C $(PRINTF_DIR)
 	rm -f $(NAME)
 
 re : fclean all

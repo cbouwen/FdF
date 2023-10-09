@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:20:05 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/04 17:12:42 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/09 16:39:46 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-/*
+#include <stdio.h>
+
 #define HEIGHT 1080
 #define WIDTH 1920
 
@@ -47,12 +48,25 @@ typedef struct	s_coordinates
 	int	x;
 	int	y;
 	int	z;
-	s_coordinates	*prev;
-	s_coordinates	*next;
 }		t_coordinates;
 
+typedef struct	s_mapinfo
+{
+	int rows;
+	int colomns;
+}			t_mapinfo;
+
+
+void	get_info(t_mapinfo *mapinfo, int fd);
+void	ft_map_info(char *argv, t_mapinfo *mapinfo);
+
+t_coordinates	**parse_map(char *argv, t_coordinates ***map, t_mapinfo mapinfo);
+
+//window ft's. Integrate later
+/*
 int	close_window(t_mlx_data *win_data);
 void	init_window(t_mlx_data *win_data);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 */
+
 #endif
