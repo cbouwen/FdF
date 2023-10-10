@@ -6,11 +6,20 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:28:21 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/03 15:11:00 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/10 14:32:34 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+void	zoom(t_mlx_data *win_data, int key)
+{
+	(void)win_data;
+	if (key == 61)
+		ft_printf("You tried to zoom in.\n");
+	if (key == 45)
+		ft_printf("You tried to zoom out.\n");
+}
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -20,13 +29,17 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-static int     handle_input(int key, t_mlx_data *win_data) //delete at end of project, no need for it
+static int     handle_input(int key, t_mlx_data *win_data) //delete ft_printf's
 {
         if (key == 65307)
         {
-                ft_printf("The %d key (ESC) has been pressed\n\n", key);
-		close_window(win_data);
+        	ft_printf("The %d key (ESC) has been pressed\n\n", key);
+			close_window(win_data);
         }
+		if (key == 45)
+			zoom(win_data, key);
+		if (key == 61)
+			zoom(win_data, key);
         ft_printf("The %d key has been pressed\n\n", key);
         return (0);
 }
@@ -47,5 +60,5 @@ void	init_window(t_mlx_data *win_data)
 	win_data->img.addr = mlx_get_data_addr(win_data->img.img, &win_data->img.bits_per_pixel, &win_data->img.line_length, &win_data->img.endian);
 	mlx_put_image_to_window(win_data->mlx, win_data->mlx_win, win_data->img.img, 0, 0);
 	mlx_hook(win_data->mlx_win, 17, 1L<<17, &close_window, win_data);
-	mlx_key_hook(win_data->mlx_win, handle_input, win_data); //handle_input ==> close_window at end of project
+	mlx_key_hook(win_data->mlx_win, handle_input, win_data);
 }

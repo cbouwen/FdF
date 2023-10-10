@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:24:08 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/09 22:02:30 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/10 12:03:33 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ void	get_info(t_mapinfo *mapinfo, int fd)
 	
 	i = 0;
 	line = get_next_line(fd);
-//	if (!line)
-//		ft_free();//
+	if (!line)
+		ft_free(mapinfo);
 	mapinfo->colomns = ft_word_count(line, ' ');
-	free(line);
 	while (line)
 	{
 		i++;
-		line = get_next_line(fd);
 		free(line);
+		line = get_next_line(fd);
 	}
 	mapinfo->rows = i;
 }
@@ -43,9 +42,6 @@ void	ft_map_info(char *argv, t_mapinfo *mapinfo)
 		perror("Error opening file");
 		exit (1);
 	}
-//	mapinfo = (t_mapinfo *)malloc(sizeof(t_mapinfo));
-//	if (!mapinfo)
-//		ft_free();
 	get_info(mapinfo, fd);
 	close(fd);
 }

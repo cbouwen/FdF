@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:07:40 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/09 22:53:12 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/10 13:54:32 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,19 @@ void	ft_fdf(char *argv)
 {
 	t_mapinfo		mapinfo;
 	t_coordinates	**map;
-	//t_mlx_data		win_data;
 
 	ft_map_info(argv, &mapinfo);
 	parse_map(argv, &map, mapinfo);
 	test(map, mapinfo);
 	//ft_calculate_iso(&map, &mapinfo);;
-	//print_map//(&map, &mapinfo);
-	//free_params(&map, &mapinfo);
+	print_map(map, mapinfo);
+	free_params(&map, &mapinfo);
 }
 
 int	main(int argc, char **argv)
 {
-	//t_mlx_data	win_data;
-
-	//win_data.mlx = mlx_init();
 	if (argc == 2)
 		ft_fdf(argv[1]);
-	//init_window(&win_data);
-	//mlx_loop(win_data.mlx);
 	ft_printf("\n");
 	return (0);
 }

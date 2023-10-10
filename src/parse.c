@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:16:34 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/09 22:08:05 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/10 11:46:35 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_find_z(char *line, t_mapinfo mapinfo, int x)
 	return (z);
 }
 
-static void	ft_find_coordinates(char *argv, t_mapinfo mapinfo, t_coordinates ***map)
+static void	ft_find_coordinates(char *argv, t_mapinfo mapinfo, t_coordinates ***map) //line error protect?
 {
 	int	x;
 	int	y;
@@ -39,8 +39,8 @@ static void	ft_find_coordinates(char *argv, t_mapinfo mapinfo, t_coordinates ***
 	char	*line;
 
 	fd = open(argv, O_RDONLY);
-	//if (fd == -1)
-	//	ft_free(1); // 1 = fd error?
+	if (fd == -1)
+		free_params(map, &mapinfo);
 	line = get_next_line(fd);
 	y = 0;
 	while (y < mapinfo.rows)
@@ -56,7 +56,6 @@ static void	ft_find_coordinates(char *argv, t_mapinfo mapinfo, t_coordinates ***
 		line = get_next_line(fd);
 		y++;
 	}
-	//free(line);
 	close(fd);
 }
 
@@ -69,13 +68,16 @@ static t_coordinates	**init_map(t_mapinfo mapinfo)
 
 	i = 0;
 	map = (t_coordinates **)malloc(sizeof(t_coordinates *) * mapinfo.rows);
-//	if (!map)
-//		ft_free(map);
+	if (!map)
+		ft_free(&mapinfo);
 	while (i < mapinfo.rows)
 	{
 		map[i] = (t_coordinates *)malloc(sizeof(t_coordinates) * mapinfo.colomns);
-		//if (!map[i])
-		//	ft_free;//
+		if (!map[i])
+		{
+			ft_free_array(map, i);
+			ft_free(&mapinfo);
+		}
 		i++;
 	}
 	return(map);

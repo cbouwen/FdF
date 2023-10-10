@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:20:05 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/09 16:39:46 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/10 15:04:53 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <math.h>
 
 #define HEIGHT 1080
 #define WIDTH 1920
@@ -62,11 +63,13 @@ void	ft_map_info(char *argv, t_mapinfo *mapinfo);
 
 t_coordinates	**parse_map(char *argv, t_coordinates ***map, t_mapinfo mapinfo);
 
-//window ft's. Integrate later
-/*
+void	free_params(t_coordinates ***map, t_mapinfo *mapinfo);
+void	ft_free(void *ptr);
+void	ft_free_array(t_coordinates **map, int count);
+
 int	close_window(t_mlx_data *win_data);
 void	init_window(t_mlx_data *win_data);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-*/
 
+void	print_map(t_coordinates **map, t_mapinfo mapinfo);
 #endif
