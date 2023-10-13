@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:42:02 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/13 12:42:55 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/13 12:50:36 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_draw_map(t_coordinates ***map, t_mapinfo mapinfo, t_mlx_data *win_data)
 	int	x;
 
 	y = -1;
+	ft_draw_line((*map)[1][1], (*map)[5][5], win_data);
 	while (++y < mapinfo.rows)
 	{
 		x = -1;
@@ -29,7 +30,6 @@ void	ft_draw_map(t_coordinates ***map, t_mapinfo mapinfo, t_mlx_data *win_data)
 				ft_draw_line((*map)[y][x], (*map)[y][x + 1], win_data);
 		}
 	}
-//	ft_draw_line((*map)[1][1], (*map)[5][5], win_data);
 }
 
 void	ft_apply_isometrics(t_coordinates ***map, t_mapinfo mapinfo)

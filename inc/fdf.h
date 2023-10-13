@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:20:05 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/13 11:33:56 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/13 12:58:37 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ typedef struct s_display_params
 //struct for Bresenham
 typedef struct	s_bresenham
 {
+	int	x;
+	int	y;
 	int	dx;
 	int	dy;
 	int	sx;
