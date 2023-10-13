@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:20:05 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/13 12:58:37 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/13 14:43:12 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <math.h>
-
+ 
 #define HEIGHT 1080
 #define WIDTH 1920
 #define angle 45
@@ -62,8 +62,8 @@ typedef struct	s_mapinfo
 	int		rows;
 	int		colomns;
 }			t_mapinfo;
-
-/*typedef struct s_bresenham
+/*
+typedef struct s_bresenham
 {
 	int			x;
 	int			y;
@@ -124,6 +124,7 @@ void	ft_apply_isometrics(t_coordinates ***map, t_mapinfo mapinfo);
 void	ft_get_display_params(t_display_params *display_params, t_coordinates **map, t_mapinfo mapinfo);
 void	ft_apply_display_params(t_display_params display_params, t_coordinates ***map, t_mapinfo mapinfo);
 
+//void	ft_draw_line(t_coordinates a, t_coordinates b, t_mlx_data *win_data);
 void	ft_draw_line(t_coordinates pixel_from, t_coordinates pixel_to, t_mlx_data *win_data);
 
 void	test(t_coordinates **map, t_mapinfo mapinfo);

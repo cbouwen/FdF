@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:22:45 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/13 13:12:31 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/13 14:42:28 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,3 @@ void    ft_draw_line(t_coordinates pixel_from, t_coordinates pixel_to, t_mlx_dat
         }
     }
 }
-
