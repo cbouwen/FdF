@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:28:21 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/10 14:32:34 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/13 11:03:40 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	close_window(t_mlx_data *win_data)
 
 void	init_window(t_mlx_data *win_data)
 {
-	win_data->mlx_win = mlx_new_window(win_data->mlx, 1920, 1080, "FdF");
-	win_data->img.img = mlx_new_image(win_data->mlx, 1920, 1080);
+	win_data->mlx_win = mlx_new_window(win_data->mlx, WIDTH, HEIGHT, "FdF");
+	win_data->img.img = mlx_new_image(win_data->mlx, WIDTH, HEIGHT);
 	win_data->img.addr = mlx_get_data_addr(win_data->img.img, &win_data->img.bits_per_pixel, &win_data->img.line_length, &win_data->img.endian);
 	mlx_put_image_to_window(win_data->mlx, win_data->mlx_win, win_data->img.img, 0, 0);
 	mlx_hook(win_data->mlx_win, 17, 1L<<17, &close_window, win_data);

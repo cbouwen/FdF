@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:20:05 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/10 15:04:53 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/13 11:33:56 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 #define HEIGHT 1080
 #define WIDTH 1920
+#define angle 45
 
 //mlx struct for image
 typedef struct	s_data
@@ -44,19 +45,61 @@ typedef struct	s_mlx_data
 	t_data	img;
 }			t_mlx_data;
 
+//struct for map coordinates
 typedef struct	s_coordinates
 {
-	int	x;
-	int	y;
+	float	x;
+	float	y;
 	int	z;
+	float dest_x;
+	float dest_y;
+
 }		t_coordinates;
 
+//struct for map limits
 typedef struct	s_mapinfo
 {
-	int rows;
-	int colomns;
+	int		rows;
+	int		colomns;
 }			t_mapinfo;
 
+/*typedef struct s_bresenham
+{
+	int			x;
+	int			y;
+	int			dx;
+	int			dy;
+	int			sx;
+	int			sy;
+	int			err;
+	int			e2;
+//	int			color_start;
+//	int			color_end;
+}				t_bresenham;
+*/
+//resize the window
+typedef struct s_display_params
+{
+	float		min_x;
+	float		max_x;
+	float		min_y;
+	float		max_y;
+	float		scale_factor_x;
+	float		scale_factor_y;
+	float		translate_x;
+	float		translate_y;
+}				t_display_params;
+
+//struct for Bresenham
+typedef struct	s_bresenham
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+	int	e2;	
+}				t_bresenham;
 
 void	get_info(t_mapinfo *mapinfo, int fd);
 void	ft_map_info(char *argv, t_mapinfo *mapinfo);
@@ -71,5 +114,17 @@ int	close_window(t_mlx_data *win_data);
 void	init_window(t_mlx_data *win_data);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
-void	print_map(t_coordinates **map, t_mapinfo mapinfo);
+void	print_map(t_coordinates ***map, t_mapinfo mapinfo);
+
+//void	calculate_map(t_coordinates ***map, t_mapinfo *mapinfo);
+void	ft_apply_isometrics(t_coordinates ***map, t_mapinfo mapinfo);
+
+void	ft_get_display_params(t_display_params *display_params, t_coordinates **map, t_mapinfo mapinfo);
+void	ft_apply_display_params(t_display_params display_params, t_coordinates ***map, t_mapinfo mapinfo);
+
+void	ft_draw_line(t_coordinates pixel_from, t_coordinates pixel_to, t_mlx_data *win_data);
+
+void	test(t_coordinates **map, t_mapinfo mapinfo);
+void	test_z(t_coordinates **map, t_mapinfo mapinfo);
+
 #endif

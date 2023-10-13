@@ -5,37 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 13:48:45 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/10 14:57:59 by cbouwen          ###   ########.fr       */
+/*   Created: 2023/10/13 10:42:02 by cbouwen           #+#    #+#             */
+/*   Updated: 2023/10/13 12:42:55 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void	ft_draw_map(t_coordinates **map, t_mapinfo mapinfo, t_mlx_data *win_data)
+void	ft_draw_map(t_coordinates ***map, t_mapinfo mapinfo, t_mlx_data *win_data)
 {
-	int	x;
 	int	y;
+	int	x;
 
-	y = 0;
-	while(y < mapinfo.rows)
+	y = -1;
+	while (++y < mapinfo.rows)
 	{
 		x = -1;
 		while (++x < mapinfo.colomns)
 		{
-			my_mlx_pixel_put(&win_data->img, (map[y][x].x) * 10, (map[y][x].y) * 10, 0x00FF0000);
+			if (y + 1 < mapinfo.rows)
+				ft_draw_line((*map)[y][x], (*map)[y + 1][x], win_data);
+			if (x + 1 < mapinfo.colomns)
+				ft_draw_line((*map)[y][x], (*map)[y][x + 1], win_data);
 		}
-		y++;
+	}
+//	ft_draw_line((*map)[1][1], (*map)[5][5], win_data);
+}
+
+void	ft_apply_isometrics(t_coordinates ***map, t_mapinfo mapinfo)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < mapinfo.rows)
+	{
+		x = -1;
+		while (++x < mapinfo.colomns)
+		{
+			(*map)[y][x].dest_x = (*map)[y][x].x * 100;
+			(*map)[y][x].dest_y = (*map)[y][x].y * 100;
+		}
 	}
 }
 
-
-void	print_map(t_coordinates **map, t_mapinfo mapinfo)
+void    print_map(t_coordinates ***map, t_mapinfo mapinfo)
 {
-	t_mlx_data	win_data;
+    t_mlx_data  win_data;
+//    t_display_params    display_params;
 
-	win_data.mlx = mlx_init();
-	init_window(&win_data);
-	ft_draw_map(map, mapinfo, &win_data);
-	mlx_loop(win_data.mlx);
+    win_data.mlx = mlx_init();
+    init_window(&win_data);
+	ft_apply_isometrics(map, mapinfo);
+//  ft_get_display_params(&display_params, *map, mapinfo);
+// ft_apply_display_params(display_params, map, mapinfo);
+   ft_draw_map(map, mapinfo, &win_data);
+	free_params(map, &mapinfo);
+    mlx_loop(win_data.mlx);
 }
+
