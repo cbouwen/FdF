@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:42:02 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/17 11:21:09 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/17 11:29:29 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	ft_apply_isometrics(t_coordinates ***map, t_mapinfo mapinfo)
 		x = -1;
 		while (++x < mapinfo.colomns)
 		{
-			(*map)[y][x].dest_x = (*map)[y][x].x * 100;
-			(*map)[y][x].dest_y = (*map)[y][x].y * 100;
+			(*map)[y][x].dest_x = (*map)[y][x].x * scale + offset;
+			(*map)[y][x].dest_y = (*map)[y][x].y * scale + offset;
 		}
 	}
 }

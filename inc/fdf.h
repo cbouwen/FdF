@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:20:05 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/17 11:12:17 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/17 11:29:47 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 #define HEIGHT 1080
 #define WIDTH 1920
 #define angle 45
+#define scale 10
+#define offset 100
 
 //mlx struct for image
 typedef struct	s_data
