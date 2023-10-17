@@ -1,7 +1,7 @@
 NAME = fdf
 
 CC = gcc
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -g
 MLX_FLAGS = -L /usr/lib -l Xext -l X11 -l m -l z
 
 SRC_DIR = ./src/

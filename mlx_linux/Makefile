@@ -10,17 +10,13 @@
 
 ## Please use configure script
 
-#make MLX shut the fuck up
-STFU = > /dev/null 2> /dev/null
 
 all	: do_configure
 
 do_configure	:
-	./configure ${STFU}
+	./configure
 
 clean	:
-	./configure clean ${STFU}
+	./configure clean
 
-fclean	: clean
-
-re	: fclean clean all
+re	: clean all

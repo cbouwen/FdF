@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:22:45 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/13 14:42:28 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/17 11:20:07 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int ft_abs(int x)
 
 void  ft_bresenham(t_coordinates pixel_from, t_coordinates pixel_to, t_bresenham *bresenham)
 {
-    bresenham->dx = ft_abs(pixel_to.dest_x - pixel_from.dest_x);
-    bresenham->dy = ft_abs(pixel_to.dest_y - pixel_from.dest_y);
+    bresenham->dx = ft_abs((int)pixel_to.dest_x - (int)pixel_from.dest_x);
+    bresenham->dy = ft_abs((int)pixel_to.dest_y - (int)pixel_from.dest_y);
     if (pixel_from.dest_x < pixel_to.dest_x)
         bresenham->sx = 1;
     else
@@ -33,8 +33,8 @@ void  ft_bresenham(t_coordinates pixel_from, t_coordinates pixel_to, t_bresenham
 	{ 
 	   	bresenham->sy = -1;
 	}
-	bresenham->x = pixel_from.dest_x;
-	bresenham->y = pixel_from.dest_y;
+	bresenham->x = (int)pixel_from.dest_x;
+	bresenham->y = (int)pixel_from.dest_y;
     bresenham->err = bresenham->dx - bresenham->dy;
 }
 
