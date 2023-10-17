@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:07:40 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/13 12:00:43 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/17 18:32:54 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	test(t_coordinates **map, t_mapinfo mapinfo)
 		while (++x < mapinfo.colomns)
 		{
 			ft_printf("Struct[%i][%i]:\nValue of x: %i\nValue of y:%i\nValue of z:%i\n\n", y, x, map[y][x].x, map[y][x].y, map[y][x].z);
-			printf("Value of dest_x: %f\nValue of dest_y:%f\n\n", map[y][x].dest_x, map[y][x].dest_y);
+			printf("Value of dest_x: %i\nValue of dest_y:%i\n\n", map[y][x].dest_x, map[y][x].dest_y);
 		}
 		y++;
 	}

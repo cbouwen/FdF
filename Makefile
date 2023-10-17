@@ -1,11 +1,11 @@
 NAME = fdf
 
 CC = gcc
-CFLAGS = -g
+CFLAGS = -g -fPIE
 MLX_FLAGS = -L /usr/lib -l Xext -l X11 -l m -l z
 
 SRC_DIR = ./src/
-SRC = main.c info.c parse.c free.c window_utils.c print.c bresenham.c
+SRC = main.c info.c isometrics.c parse.c free.c window_utils.c print.c bresenham.c
 SRC_FILES = $(addprefix $(SRC_DIR), $(SRC))
 
 HEADER = ./inc/fdf.h ./mlx_linux/mlx.h ./mlx_linux/mlx_int.h

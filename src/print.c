@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:42:02 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/17 11:29:29 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/17 18:10:13 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_draw_map(t_coordinates **map, t_mapinfo mapinfo, t_mlx_data *win_data)
 	ft_draw_line(map[5][1], map[1][5], win_data);
 	ft_draw_line(map[5][1], map[1][5], win_data);
 */
-ft_draw_line(map[1][1], map[8][8], win_data);
+//	ft_draw_line(map[1][1], map[8][8], win_data);
 	while (++y < mapinfo.rows)
 	{
 		x = -1;
@@ -45,7 +45,7 @@ ft_draw_line(map[1][1], map[8][8], win_data);
 	}
 //	ft_draw_line(map[1][1], map[5][5], win_data);*/
 }
-
+/*
 void	ft_apply_isometrics(t_coordinates ***map, t_mapinfo mapinfo)
 {
 	int	x;
@@ -62,7 +62,7 @@ void	ft_apply_isometrics(t_coordinates ***map, t_mapinfo mapinfo)
 		}
 	}
 }
-
+*/
 void    print_map(t_coordinates ***map, t_mapinfo mapinfo)
 {
     t_mlx_data  win_data;
@@ -70,7 +70,7 @@ void    print_map(t_coordinates ***map, t_mapinfo mapinfo)
 
     win_data.mlx = mlx_init();
     init_window(&win_data);
-	ft_apply_isometrics(map, mapinfo);
+	ft_calculate_map(map, mapinfo);
 //  ft_get_display_params(&display_params, *map, mapinfo);
 // ft_apply_display_params(display_params, map, mapinfo);
 	ft_draw_map(*map, mapinfo, &win_data);

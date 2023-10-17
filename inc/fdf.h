@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:20:05 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/17 11:29:47 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/17 18:33:39 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@
 #include <stdio.h>
 #include <math.h>
  
-#define HEIGHT 1080
-#define WIDTH 1920
+#define HEIGHT 2050
+#define WIDTH 3800
 #define angle 45
-#define scale 10
-#define offset 100
+#define scale 200
 
 //mlx struct for image
 typedef struct	s_data
@@ -53,8 +52,8 @@ typedef struct	s_coordinates
 	float	x;
 	float	y;
 	int	z;
-	float dest_x;
-	float dest_y;
+	int dest_x;
+	int dest_y;
 
 }		t_coordinates;
 
@@ -86,10 +85,10 @@ typedef struct s_display_params
 	float		max_x;
 	float		min_y;
 	float		max_y;
-	float		scale_factor_x;
-	float		scale_factor_y;
-	float		translate_x;
-	float		translate_y;
+	float		scale_x;
+	float		scale_y;
+	float		offset_x;
+	float		offset_y;
 }				t_display_params;
 
 //struct for Bresenham
@@ -131,5 +130,9 @@ void	ft_draw_line(t_coordinates pixel_from, t_coordinates pixel_to, t_mlx_data *
 
 void	test(t_coordinates **map, t_mapinfo mapinfo);
 void	test_z(t_coordinates **map, t_mapinfo mapinfo);
+
+void	ft_calculate_scale(t_display_params *p, t_coordinates ***map, t_mapinfo mapinfo);
+
+void    ft_calculate_map(t_coordinates ***map, t_mapinfo mapinfo);
 
 #endif
