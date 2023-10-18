@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:12:28 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/18 10:25:42 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/18 13:13:57 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_calculate_iso(t_coordinates ***map, t_mapinfo mapinfo)
         x = -1;
         while (++x < mapinfo.colomns)
         {
-            (*map)[y][x].x = ((*map)[y][x].x - (*map)[y][x].y) * cos(0.5);
-            (*map)[y][x].y = ((*map)[y][x].x + (*map)[y][x].y) * sin(0.5) - (*map)[y][x].z;
+            (*map)[y][x].x = ((*map)[y][x].x - (*map)[y][x].y) * cos(0.785);
+            (*map)[y][x].y = ((*map)[y][x].x + (*map)[y][x].y) * sin(0.785) - (*map)[y][x].z;
         }
     }
 }
@@ -61,13 +61,10 @@ void	ft_calculate_scale(t_display_params *p, t_coordinates ***map, t_mapinfo map
 	int	x;
 	int	y;
 
-(void)map;
-(void)mapinfo;
-
 	p->scale_x = (3800 / 4) / (p->max_x - p->min_x);
 	p->scale_y = (2050 / 4) / (p->max_y - p->min_y);
-	p->offset_x = 50;
-	p->offset_y = 50;
+	p->offset_x = 1200;
+	p->offset_y = 750;
    y = -1;
     while (++y < mapinfo.rows)
     {

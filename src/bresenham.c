@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:22:45 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/18 10:22:08 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/18 11:56:24 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void    ft_draw_line(t_coordinates pixel_from, t_coordinates pixel_to, t_mlx_dat
     ft_bresenham(pixel_from, pixel_to, &bresenham);
     while (1)
     {
-        my_mlx_pixel_put(&win_data->img, bresenham.x, bresenham.y, 0x00FF0000);
+        my_mlx_pixel_put(&win_data->img, bresenham.x, bresenham.y, 0x00FFFFFF);
         if (bresenham.x == (int)pixel_to.dest_x && bresenham.y == (int)pixel_to.dest_y)
             break;
         bresenham.e2 = 2 * bresenham.err;

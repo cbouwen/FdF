@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:16:34 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/10 11:46:35 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/18 13:15:05 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static int	ft_find_z(char *line, t_mapinfo mapinfo, int x)
 		i++;
 	if (mapinfo.colomns == x + 1)
 		i = 0;
-	return (z);
+	return (z * 2);
 }
 
-static void	ft_find_coordinates(char *argv, t_mapinfo mapinfo, t_coordinates ***map) //line error protect?
+static void	ft_find_coordinates(char *argv, t_mapinfo mapinfo, t_coordinates ***map)
 {
 	int	x;
 	int	y;

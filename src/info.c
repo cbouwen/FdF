@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:24:08 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/10 12:03:33 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/18 13:13:33 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ void	ft_map_info(char *argv, t_mapinfo *mapinfo)
 	get_info(mapinfo, fd);
 	close(fd);
 }
-

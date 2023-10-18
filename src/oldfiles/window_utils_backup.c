@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_utils.c                                     :+:      :+:    :+:   */
+/*   window_utils_backup.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:28:21 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/18 13:12:59 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/10 15:16:41 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-static int     handle_input(int key, t_mlx_data *win_data)
+int     handle_input(int key, t_mlx_data *win_data)
 {
         if (key == 65307)
-			close_window(win_data);
+        {
+                ft_printf("The %d key (ESC) has been pressed\n\n", key);
+		close_window(win_data);
+        }
+        ft_printf("The %d key has been pressed\n\n", key);
         return (0);
 }
 
@@ -36,11 +40,35 @@ int	close_window(t_mlx_data *win_data)
 	exit (1);
 }
 
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+void	ft_make_square(t_data *img)
+{
+	int	x;
+	int	y;
+
+	x = 500;
+	while (x < 1500)
+	{
+		y = 250;
+		while (y < 750)
+		{
+			my_mlx_pixel_put(img, x, y, 0x00FF0000);
+			y++;
+		}
+		x++;
+	}
+}
+
 void	init_window(t_mlx_data *win_data)
 {
 	win_data->mlx_win = mlx_new_window(win_data->mlx, WIDTH, HEIGHT, "FdF");
 	win_data->img.img = mlx_new_image(win_data->mlx, WIDTH, HEIGHT);
 	win_data->img.addr = mlx_get_data_addr(win_data->img.img, &win_data->img.bits_per_pixel, &win_data->img.line_length, &win_data->img.endian);
+	ft_make_square(&win_data->img);
 	mlx_put_image_to_window(win_data->mlx, win_data->mlx_win, win_data->img.img, 0, 0);
 	mlx_hook(win_data->mlx_win, 17, 1L<<17, &close_window, win_data);
 	mlx_key_hook(win_data->mlx_win, handle_input, win_data);
