@@ -6,33 +6,11 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:12:28 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/17 18:34:06 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/18 10:25:42 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-void	ft_calculate_scale(t_display_params *p, t_coordinates ***map, t_mapinfo mapinfo)
-{
-	int	x;
-	int	y;
-	
-	p->scale_x = (3800 / 2) / (p->max_x - p->min_x);
-	p->scale_y = (2050 / 2) / (p->max_y - p->min_y);
-	p->offset_x = 50;
-	p->offset_y = 50;
-    y = -1;
-    while (++y < mapinfo.rows)
-    {
-        x = -1;
-        while (++x < mapinfo.colomns)
-        {
-            (*map)[y][x].dest_x = (int)(*map)[y][x].x;
-            (*map)[y][x].dest_y = (int)(*map)[y][x].y;
-        }
-    }
-
-}
 
 void	ft_calculate_iso(t_coordinates ***map, t_mapinfo mapinfo)
 {
@@ -76,6 +54,31 @@ void	ft_find_max_range(t_display_params *display_params, t_coordinates **map, t_
                 display_params->max_y = map[y][x].y;
         }
     }
+}
+
+void	ft_calculate_scale(t_display_params *p, t_coordinates ***map, t_mapinfo mapinfo)
+{
+	int	x;
+	int	y;
+
+(void)map;
+(void)mapinfo;
+
+	p->scale_x = (3800 / 4) / (p->max_x - p->min_x);
+	p->scale_y = (2050 / 4) / (p->max_y - p->min_y);
+	p->offset_x = 50;
+	p->offset_y = 50;
+   y = -1;
+    while (++y < mapinfo.rows)
+    {
+        x = -1;
+        while (++x < mapinfo.colomns)
+        {
+            (*map)[y][x].dest_x = (*map)[y][x].x;
+            (*map)[y][x].dest_y = (*map)[y][x].y;
+        }
+    }
+
 }
 
 void	ft_apply_params(t_display_params p, t_coordinates ***map, t_mapinfo mapinfo)

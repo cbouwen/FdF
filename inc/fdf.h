@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:20:05 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/10/17 18:33:39 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/10/18 10:26:33 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ typedef struct	s_coordinates
 	float	x;
 	float	y;
 	int	z;
-	int dest_x;
-	int dest_y;
+	float dest_x;
+	float dest_y;
 
 }		t_coordinates;
 
@@ -85,10 +85,10 @@ typedef struct s_display_params
 	float		max_x;
 	float		min_y;
 	float		max_y;
-	float		scale_x;
-	float		scale_y;
-	float		offset_x;
-	float		offset_y;
+	int			scale_x;
+	int			scale_y;
+	int			offset_x;
+	int			offset_y;
 }				t_display_params;
 
 //struct for Bresenham
@@ -127,9 +127,6 @@ void	ft_apply_display_params(t_display_params display_params, t_coordinates ***m
 
 //void	ft_draw_line(t_coordinates a, t_coordinates b, t_mlx_data *win_data);
 void	ft_draw_line(t_coordinates pixel_from, t_coordinates pixel_to, t_mlx_data *win_data);
-
-void	test(t_coordinates **map, t_mapinfo mapinfo);
-void	test_z(t_coordinates **map, t_mapinfo mapinfo);
 
 void	ft_calculate_scale(t_display_params *p, t_coordinates ***map, t_mapinfo mapinfo);
 
